@@ -12,8 +12,7 @@ def create_app(config_object=None):
     flask_app = Flask(__name__)
     flask_app.config.from_object(config_object)
 
-    frontend = os.environ.get("FRONTEND_URL", "*")
-    CORS(flask_app, origins=[frontend, "http://localhost:5173"])
+    CORS(flask_app)
 
     db.init_app(flask_app)
     migrate.init_app(flask_app, db)
