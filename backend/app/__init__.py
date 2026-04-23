@@ -23,4 +23,8 @@ def create_app(config_object=None):
     flask_app.register_blueprint(issues_bp)
     flask_app.register_blueprint(comments_bp)
 
+    with flask_app.app_context():
+        from flask_migrate import upgrade
+        upgrade()
+
     return flask_app
