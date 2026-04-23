@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: trackr-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: flask db upgrade && gunicorn "app:create_app()"
+    envVars:
+      - key: FLASK_APP
+        value: app:create_app
+      - key: FLASK_ENV
+        value: production
