@@ -18,10 +18,11 @@ def create_app(config_object=None):
     db.init_app(flask_app)
     migrate.init_app(flask_app, db)
 
-    from .routes import projects_bp, issues_bp, comments_bp
+    from .routes import projects_bp, issues_bp, comments_bp, health_bp
     flask_app.register_blueprint(projects_bp)
     flask_app.register_blueprint(issues_bp)
     flask_app.register_blueprint(comments_bp)
+    flask_app.register_blueprint(health_bp)
 
     with flask_app.app_context():
         db.create_all()
